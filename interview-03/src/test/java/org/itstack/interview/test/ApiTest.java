@@ -16,7 +16,7 @@ public class ApiTest {
     public void before() {
         "abc".hashCode();
         // 读取文件，103976个英语单词库.txt
-        words = FileUtil.readWordList("E:/itstack/git/github.com/interview/interview-01/103976个英语单词库.txt");
+        words = FileUtil.readWordList("D:\\java_project\\fuge\\interview\\interview-03\\103976个英语单词库.txt");
     }
 
     @Test
@@ -35,6 +35,15 @@ public class ApiTest {
         System.out.println(HashCode.hashArea(words, 31).values());
         System.out.println(HashCode.hashArea(words, 32).values());
         System.out.println(HashCode.hashArea(words, 199).values());
+    }
+
+    @Test
+    public void testMultiple() {
+        for (int i = 0; i <10; i++) {
+            int a = (0 << 5) - i;
+            int b = 31 * i;
+            System.out.println(a == b);
+        }
     }
 
 }

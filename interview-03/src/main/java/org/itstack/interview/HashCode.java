@@ -29,15 +29,22 @@ public class HashCode {
      * 计算Hash碰撞概率
      */
     private static RateInfo hashCollisionRate(Integer multiplier, List<Integer> hashCodeList) {
+        // 最大hash值
         int maxHash = hashCodeList.stream().max(Integer::compareTo).get();
+        // 最小hash值
         int minHash = hashCodeList.stream().min(Integer::compareTo).get();
 
+        // 计算碰撞数量
         int collisionCount = (int) (hashCodeList.size() - hashCodeList.stream().distinct().count());
+        // 计算碰撞率
         double collisionRate = (collisionCount * 1.0) / hashCodeList.size();
 
         return new RateInfo(maxHash, minHash, multiplier, collisionCount, collisionRate);
     }
 
+    /**
+     * hash碰撞率计算
+     */
     public static List<RateInfo> collisionRateList(Set<String> strList, Integer... multipliers) {
         List<RateInfo> rateInfoList = new ArrayList<>();
         for (Integer multiplier : multipliers) {
